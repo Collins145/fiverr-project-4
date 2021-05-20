@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Fiverr Clone</title>
+    <!-- Styles -->
+    <link rel='stylesheet' href='public/css/style.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="bg-white shadow dark:bg-gray-800">
+            <div x-data="{ isOpen : false }" class="md:max-w-xl lg:max-w-7xl mx-auto py-3 px-6">
+                <div class="flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <a class="text-xl font-bold lg\:text-black md:text-3xl" href="#"><img class="w-75 h-20 object-center object-cover" src="./public/images/fiverr-logo.jpg" alt="fiverr-logo"></a>
+    
+                            <!-- Search input on desktop screen -->
+                            <div class="hidden mx-8 md:block">
+                                <div class="relative flex">
+                                    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                        <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
+                                            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </span>
+    
+                                    <input type="text" class="w-full py-1 pl-10 pr-4 text-gray-900 bg-white border border-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Find Services">
+                                    <button class="bg-blue-600 text-white font-bold py-2 px-4">Search</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Mobile menu button -->
+                        <div class="flex md:hidden">
+                            <button @click="isOpen = !isOpen" type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+                                <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+                                    <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+    
+                    <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+                    <div :class="isOpen ? 'show':'hidden' " class="items-center md:flex">
+                        <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
+                            <a class="my-1 text-md font-bold text-gray-600 hover:text-blue-600 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Fiverr Business  <a>
+                            <a class="my-1 text-md font-bold text-gray-600 hover:text-blue-600 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Explore</a>
+                            <a class="my-1 text-md font-bold text-gray-600 hover:text-blue-600 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Eglish</a>
+                            <a class="my-1 text-md font-bold text-gray-600 hover:text-blue-600 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">$USD</a>
+                            <a class="my-1 text-md font-bold text-gray-600 hover:text-blue-600 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Become a Seller</a>
+                            <a class="my-1 text-md font-bold text-gray-600 hover:text-blue-600 dark:hover:text-indigo-400 md:mx-4 md:my-0" href="#">Sign In</a>
+                        </div>
+    
+                        <div class="flex items-center py-2 -mx-1 md:mx-0">
+                            <a class="block w-1/2 px-3 py-2 mx-1 text-md font-medium text-center text-white bg-blue-500 rounded-md md:mx-2 md:w-auto" href="#">Login</a> 
+                        </div>
+    
+                        <!-- Search input on mobile screen -->
+                        <div class="mt-3 md:hidden">
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                    <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                                <input type="text" class="w-50 h-50 py-2 pl-10 pr-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" placeholder="Search">
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="hero-section" class="bg-green-500 text-white py-20" style="height: 80vh;" >
+            <div class="container">
+                <div class="max-w-7xl mx-auto px-6">
+                        <p class="text-5xl font-semibold leading-tight">Find the perfect <span class="italic font-normal">freelance</span></p>
+                        <p class="text-5xl font-semibold">services for your business</p>
+                    <div class="relative flex mt-6">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                        <input type="search" class="w-full sm:w-2/5 py-2 pl-10 rounded-tl-md rounded-bl-md text-gray-700 bg-white border border-gray-300  dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring " placeholder="Try 'building mobile app' ">
+                        <button class="bg-blue-500 text-white font-bold rounded-br-md rounded-tr-md py-2 px-4">Search</button>
+                    </div>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <p>Popular:</p>
+                        <p class="rounded-full px-2 border border-white text-sm hover:bg-white hover:text-gray-900 font-normal">Web and Mobile Design</p>
+                        <p class="rounded-full px-2 border border-white text-sm hover:bg-white hover:text-gray-900 font-normal">Wordpress</p>
+                        <p class="rounded-full px-2 border border-white text-sm hover:bg-white hover:text-gray-900 font-normal">Logo Design</p>
+                        <p class="rounded-full px-2 border border-white text-sm hover:bg-white hover:text-gray-900 font-normal">Dropshipping</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-10">
+            <div class="max-w-sm sm:max-w-xl md:max-w-4xl lg:max-w-4xl xl:max-w-6xl mx-auto mt-12">
+                    <p class="text-3xl text-gray-700 font-bold pb-6">Popular professional services</p>
+                <div class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 relative bg-cover bg-center" style="background-image: url(https://images.unsplash.com/photo-1593437955835-fc8c51725430?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1264&q=80);">
+                                        <div class="absolute"></div>
+                                        <div class="text-white py-2 px-2">
+                                            <p class="text-sm font-semibold">Unlock growth online</p>
+                                            <h1 class="font-bold text-xl">SEO</h1>
+                                        </div>
+                                    </div>    
+                                </div>    
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 relative bg-cover" style="background-image: url(https://images.unsplash.com/photo-1522139137660-4248e04955b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80);">
+                                        <div class="bg-gray-800"></div>
+                                        <div class="text-white py-2 px-2">
+                                            <p class="text-sm font-semibold">Build your branch</p>
+                                            <h1 class="font-bold text-xl">Logo Design</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 relative bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1620287341639-d141a3a15cfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80);">
+                                        <div class="absolute"></div>
+                                        <div class="text-white px-2 py-2">
+                                            <p class="text-sm font-semibold">Customize your site</p>
+                                            <h1 class="text-xl font-bold">WordPress</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80);">
+                                        <div></div>
+                                        <div class="text-white py-2 px-2">
+                                            <p class="text-sm font-semibold">Reach more custonmers</p>
+                                            <h1 class="text-xl font-bold">Social Media</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 relative bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1599658880436-c61792e70672?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80);">
+                                        <div class="absolute"></div>
+                                        <div class="text-white py-2 px-2">
+                                            <p class="text-sm font-semibold">Learn your business</p>
+                                            <h1 class="text-xl font-bold">Data Entry</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1593193790235-ceed25d22b3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=675&q=80);">
+                                        <div></div>
+                                        <div class="text-white px-2 py-2">
+                                            <p class="text-sm font-semibold">Go global</p>
+                                            <h1 class="text-xl font-bold">Translation</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>    
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1512820790803-83ca734da794?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1374&q=80);">
+                                        <div></div>
+                                        <div class="text-white py-2 px-2">
+                                            <p class="text-sm font-semibold">Showcase your story</p>
+                                            <h1 class="text-xl font-bold">Book Covers</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>    
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1552570173-a92bede002b8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80);">
+                                        <div></div>
+                                        <div class="text-white px-2 py-2">
+                                            <p class="text-sm font-semibold">Color your business</p>
+                                            <h1 class="text-xl font-bold">Illustration</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1467196271131-42c8c8499d72?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1368&q=80);">
+                                        <div></div>
+                                        <div class=" text-white py-2 px-2">
+                                            <p class="text-sm font-semibold">Share your message</p>
+                                            <h1 class="text-xl font-bold">Voice Over</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <div class="rounded-lg w-full md:w-56 h-80 bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1583545973665-e3e59a376f5b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);">
+                                        <div></div>
+                                        <div class="text-white py-2 px-2">
+                                            <p class="text-sm font-semibold">Engage your audience </p>
+                                            <h1 class="text-xl font-bold">Video Explainer</h1>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </li>
+                        </ul>
+                    </div>    
+                </div>    
+            </div>
+        </section>
+        <section class="bg-green-50">
+            <div class="md:max-w-xl lg:max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 py-10 gap-12">
+                    <div class="px-4">
+                        <h1 class="text-3xl font-bold pb-4">A whole world of freelance <br> talent at your fingertips</h1>
+                        <p class="text-xl font-bold">The best for every budget</p>
+                        <span>Find high-quality services at every price point.No hourly <br> rates,just project-based pricing. </span>
+                        <h2 class="text-xl font-bold pt-4">Quality work done quickly</h2>
+                        <span>Find the right freelancer to begin working on your <br> project within minutes</span>
+                        <p class="text-xl font-bold pt-4">Protected payments,everytime</p>
+                        <span>Always know what you'll pay upfront.Your payment isn't <br> released until you approve the work.</span>
+                        <p class="text-xl font-bold pt-4">24/7 support</p>
+                        <span>Question? Our round-the-clock support tam is <br> available to help anytime,anywhere.</span>
+                    </div>
+                    <div class="px-6 flex items-center">
+                        <iframe class="rounded-md h-96 w-full" src="https://www.youtube.com/embed/Mnk8Ja2AtD8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="md:max-w-xl lg:max-w-6xl mx-auto">
+                <p class=" text-2xl font-bold pb-8 mt-20 px-6">Explore the market place</p>
+          
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 py-10">
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/color/48/000000/slack-new.png"/>
+                            </div>
+                            <p class="pb-6 text-center">Graphics & Design</p>
+                        </div>
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/nolan/64/apple-tv.png"/>
+                            </div>
+                            <p class="pb-6 text-center">Digital Marketing</p>
+                        </div>
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/emoji/48/000000/clipboard-emoji.png"/>
+                            </div>
+                            <p class="pb-6 text-center">Writing & Translation</p>
+                        </div>
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/emoji/48/000000/briefcase-emoji.png"/>
+                            </div>
+                            <p class="pb-6 text-center">Video & Animation</p>
+                        </div>
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/color/48/000000/microphone.png"/>
+                            </div>
+                            <p class="pb-6  text-center">Music & Audio</p>
+                        </div>
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/fluent/48/000000/visual-studio-code-2019.png"/>
+                            </div>
+                            <p class="pb-6  text-center">Programming & Tech</p>
+                        </div>
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/color/48/000000/youtube-studio.png"/>
+                            </div>
+                            <p class="pb-6  text-center">Business</p>
+                        </div>
+                        <div>
+                            <div class='flex justify-center'>
+                                <img class='h-14' src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png"/>
+                            </div>
+                            <p class="pb-6  text-center">Lifestyle</p>
+                        </div>
+                
+                </div>
+            </div>    
+        </section>
+        <section class="bg-indigo-900">
+            <div class="md:max-w-xl lg:max-w-6xl mx-auto py-10 text-gray-400">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-4 px-6">
+                    <div>
+                        <p class="text-2xl font-bold pb-8">fiverr business</p>
+                        <h1 class="text-3xl font-bold pb-4">A business solution designed <br> for <em>teams</em> </h1>
+                        <p class="text-xl font-bold pb-4">Upgrade to a curated experience packed with tools <br> and benefits,dedicated to business</p>
+                        <p class="text-lg font-semibold pb-4">Connect to freelancers with proven business <br> experience</p>
+                        <p class="text-lg font-semibold pb-4">Get matched with the perferct talent by a customer <br> success manager</p>
+                        <p class="text-lg font-semibold pb-4">Manage teamwork and boost productivity with <br> one powerful workspace</p>
+                    </div>
+                    <div>
+                        <img class="rounded-lg w-full h-64 object-cover object-center" src="./public/images/freelancer.jfif" alt="free-lancer">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="md:max-w-xl lg:max-w-6xl mx-auto">
+                <div class="splide reviews">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 py-10">
+                                    <div class="pb-8 ml-8 px-4">
+                                        <iframe class="w-full h-64 rounded-md object-center object-cover" src="https://www.youtube.com/embed/tgLomXGU90U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="ml-8 px-2">
+                                        <h1 class="text-lg font-semibold text-gray-500">Caitlin Tormey,Cheif Conmmercial OfficerNAADAM</h1>
+                                        <p class="text-green-800 md:text-2xl font-semibold italic mt-4 leading-relaxed">"We've used Fiverr for Shopify web development, graphic design and backend web development.Working with fiverr makes my job a little more easier"</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>   
+                <div class="bg-blue-600">
+                    <div class="md:max-w-xl lg:max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 py-20">
+                            <div class="px-6">
+                                <p class="text-white text-2xl pb-4"><strong>fiverr</strong> logo maker.</p>
+                                <h1 class="text-white text-3xl pb-4"> <b>Make an incredible logo</b> <em>in</em> <br> <em>minutes</em> </h1>
+                                <p class="text-white text-lg pb-6">Pre-designed by top talent.Just add your touch.</p>
+                                <a href=""><span class="rounded-lg text-blue-800 text-md px-6 py-2 bg-white">Try Fiverr Logo Maker</span></a>
+                            </div>
+                            <div class="px-6 py-6">
+                                <img class="rounded-md w-full h-64  object-center object-cover" src="./public/images/professional-business-logo.jpg" alt="professional-business-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="bg-gray-100">
+            <div class="md:max-w-xl lg:max-w-6xl mx-auto py-10 px-6">
+                    <p class="text-3xl font-bold pb-8">Get inspired by projects made by our freelancers</p>
+                <div class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list flex gap-6">
+                            <li class="splide__slide">
+                                <div>
+                                    <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/flyer-design.jfif" alt="flyer-design">
+                                    <div class="py-4 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                        <div class="flex ml-5">
+                                            <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-base font-bold text-gray-800">Flyer Design</p>
+                                                <p class="text-sm text-gray-400 font-semibold">by spickex</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/logo-design.jfif" alt="logo-design">
+                                    <div class="py-4 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                        <div class="flex ml-5">
+                                            <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-base font-bold text-gray-800">Logo Design</p>
+                                                <p class="text-sm text-gray-400 font-semibold">by niccoffman</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/brand-styles-guides.jfif" alt="brand-styles-guides">
+                                    <div class="py-1 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                        <div class="flex ml-5">
+                                                <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-base font-bold text-gray-800">Brand Style Guides</p>
+                                                <p class="text-sm text-gray-400 font-semibold">by digitalgeria</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <li>
+                            <li class="splide__slide">
+                                <div>
+                                        <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/packaging-design.jfif" alt="packaging-design">
+                                    <div class="py-4 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                        <div class="flex ml-5">
+                                            <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-base font-bold text-gray-800">Pacakging Design</p>
+                                                <p class="text-sm text-gray-400 font-semibold">by mijalzagier</p>
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                    <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/logo-design2.jfif" alt="logo-design2">
+                                    <div class="py-4 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                        <div class="flex ml-5">
+                                                <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-base font-bold text-gray-800">Logo Design</p>
+                                                <p class="text-sm text-gray-400 font-semibold">by niccoffman</p>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                        <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/web-mobile-design.png" alt="web-mobile-design">
+                                    <div class="py-1 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                        <div class="flex ml-5">
+                                            <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-base font-bold text-gray-800">Web & Mobile Design</p>
+                                                <p class="text-sm text-gray-400 font-semibold">by paudmartins</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>   
+                                    <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/illustrations.jfif" alt="illustrations">
+                                        <div class="py-4 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                            <div class="flex ml-5">
+                                                <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                                <div class="ml-3">
+                                                    <p class="text-base font-bold text-gray-800">Illustration</p>
+                                                    <p class="text-sm text-gray-400 font-semibold">dvincentgomes</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide">
+                                <div>
+                                        <img class="rounded-tl-md rounded-tr-md w-full h-56 object-cover" src="./public/images/brand-styles-guides2.jfif" alt="brand-styles-guides2">
+                                    <div class="py-1 bg-white rounded-bl-md rounded-br-md shadow-md">
+                                        <div class="flex ml-5">
+                                            <img class="rounded-full h-9 w-9 object-cover" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                                            <div class="ml-3">
+                                                <p class="text-base font-bold text-gray-800">Brand Style Guides</p>
+                                                <p class="text-sm text-gray-400 font-semibold">by digitalgeria</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>                            
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="md:max-w-xl lg:max-w-6xl mx-auto">
+                <div class="py-10 px-6">
+                    <p class="text-2xl font-bold">Fiverr Guides</p>
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 pt-">
+                        <div>
+                            <img class="rounded-lg object-center object-cover w-full h-60" src="./public/images/online-business.jfif" alt="online-bsuiness">
+                            <p class="text-md font-bold text-gray-900 pt-4">Start an online business and work from home</p>
+                            <span class="text-sm text-gray-700">A complete guide to starting a small business</span>
+                        </div>
+                        <div>
+                            <img class="rounded-lg object-center object-cover w-full h-60" src="./public/images/digital-marketing.jfif" alt="digital-marketing">
+                            <p class="text-md font-bold text-gray-900 pt-4">Digital marketing made easy</p>
+                            <span class="text-sm text-gray-700">A practical guide to understand what is digital <br> marketing</span>
+                        </div>
+                        <div>
+                            <img class="rounded-lg object-center object-cover w-full h-60" src="./public/images/create-business-logo.jfif" alt="create-business-logo">
+                       
+                            <p class="text-md font-bold text-gray-900 pt-4">Create a logo for your business</p>
+                            <span class="text-sm text-gray-700-">A step-by-step guide to create a memorable <br> business logo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-900 py-10" style="background-color: rgba(167, 48, 48, 0.966);">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <div class="py-10 items-center">
+                            <p class="text-4xl text-white font-bold pb-8 ml-8">Find the <em>talent</em> needed to<br>get your business <em>growing</em>.</p>
+                            <span class="rounded-lg bg-green-600 text-white px-6 py-2 ml-8">Get Started</span>
+                        </div>
+                        <div class="px-8">
+                            <img class="rounded-lg w-full h-68 object-center object-cover" src="./public/images/talented-designer.jfif" alt="talented-designer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        
+    <footer class="bg-white dark:bg-gray-800">
+        <div class="md:max-w-xl lg:max-w-6xl mx-auto py-10">
+            <div class="grid grid-row-5 lg:grid-cols-5">
+                <div class="px-4">
+                    <div class="text-lg font-bold pt-4">
+                        Categories
+                    </div>
+
+                    <a href="#"
+                        class="block mt-5 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Graphic & Design
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Digital Marketing
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Writing & Translation
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Video & Animation
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Music & Audio
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Programming & Tech
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Business
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Lifestyle
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Sitemap
+                    </a>
+                </div>
+
+                <div class="px-6">
+                    <div class="text-lg font-bold pt-4">
+                        About
+                    </div>
+
+                    <a href="#"
+                        class="block mt-5 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Careers
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Press & News
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Partnerships
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Privacy Policy
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Terms of Service
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Intellectual Property Claims
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Investor Relations
+                    </a>
+                </div>
+
+                <div class="px-6">
+                    <div class="text-lg font-bold pt-4">
+                        Support
+                    </div>
+
+                    <a href="#"
+                        class="block mt-5 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Help Support
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Trust Safety
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Selling on Fiverr
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Buying on Fiverr
+                    </a>
+                </div>
+
+                <div class="px-6">
+                    <div class="text-lg font-bold pt-4">
+                        Community
+                    </div>
+
+                    <a href="#"
+                        class="block mt-5 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Events
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Blogs
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Forum
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Community Standards
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Podcast
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Affiliates
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Invite a Friend
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Become a Seller
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Fiverr Elevate
+                    </a>
+                </div>
+                <div class="px-6">
+                    <div class="text-lg font-bold pt-4">
+                        More on Fiverr
+                    </div>
+
+                    <a href="#"
+                        class="block mt-5 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Fiverr Business
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Fiverr Pro
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Fiverr Studios
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Fiverr Logo Maker
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Fiverr Guides
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Get Inspired
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Clearvoice
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        AND CO
+                    </a>
+                    <a href="#"
+                        class="block mt-3 text-sm font-medium text-gray-500 duration-700 dark:text-gray-300 hover:text-gray-400 dark:hover:text-gray-200 hover:underline">
+                        Learn
+                    </a>
+                </div>
+            </div>
+
+            <hr class="my-10 dark:border-gray-500">
+
+            <div class="max-w-6xl mx-auto py-10">
+                <div class="grid grid-rows-1 lg:grid-cols-2 px-4">
+                    <div class="flex items-center gap-4">
+                        <p class="text-2xl font-bold text-gray-500">fiverr.</p>
+                        <span class="text-sm text-gray-500">Fiverr International Ltd.2021</span>
+                    </div>
+    
+                    <div class="flex items-center mt-3 -mx-2 sm:mt-0 gap-4">
+                        <a href="#" class="mx-2 text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+                            aria-label="Facebook">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"><img class="text-gray-400" src="https://img.icons8.com/small/16/000000/instagram-new.png"/></a>
+                        <a href="#"><img class="w-4 h-4" src="https://img.icons8.com/ios/50/000000/twitter--v2.png"/></a>
+                        <a href="#"><img src="https://img.icons8.com/material/24/000000/linkedin--v3.png"/></a>
+                        <a href="#" class=" text-gray-400 hover:text-gray-500 dark:hover:text-gray-300" aria-label="Github">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z">
+                                </path>
+                            </svg>
+                        </a>
+                        <p class="text-gray-400 font-mono -mx-auto">&copy;Buid by Collins omondi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- initialize splide js -->
+<script>
+      var options = {
+        perPage: 5,
+        autoplay: true,
+        type: 'loop',
+        gap: 20,
+        breakpoints: {
+		640: {
+			perPage: 1,
+		},
+	}
+      }    
+	document.addEventListener( 'DOMContentLoaded', function () {
+        let splides = document.querySelectorAll('.splide')
+
+        splides.forEach(function(splide) {
+            if(splide.classList.contains('reviews')) {
+                options.perPage = 1
+            } else {
+                options.perPage = 5
+            }
+            new Splide(splide, options ).mount();
+        })
+	} );
+</script>    
+</body>
+</html>
+
+
+
+
+
+
+
